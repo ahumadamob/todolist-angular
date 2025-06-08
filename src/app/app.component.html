@@ -1,0 +1,13 @@
+<div class="container my-4">
+  <h1>{{ title }}</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <app-user-form (refresh)="userList.getUsers()"></app-user-form>
+      <app-user-list #userList></app-user-list>
+    </div>
+    <div class="col-md-6">
+      <app-group-form (refresh)="groupList.getGroups()"></app-group-form>
+      <app-group-list #groupList></app-group-list>
+    </div>
+  </div>
+</div>
