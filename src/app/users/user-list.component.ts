@@ -9,6 +9,8 @@ export class UserListComponent implements OnInit {
   users: UserResponseDto[] = [];
   deleteId?: number;
   modal: any;
+  sortKey: 'id' | 'username' | 'group' = 'id';
+  sortAsc = true;
 
   constructor(private userService: UserService) {}
 
@@ -17,7 +19,10 @@ export class UserListComponent implements OnInit {
   }
 
   getUsers() {
-    this.userService.findAll().subscribe(users => this.users = users);
+    this.userService.findAll().subscribe(users => {
+      this.users = users;
+      this.applySort();
+    });
   }
 
   confirmDelete(id: number) {
@@ -38,6 +43,37 @@ export class UserListComponent implements OnInit {
       if (this.modal) {
         this.modal.hide();
       }
+    });
+  }
+
+  sort(field: 'id' | 'username' | 'group') {
+    if (this.sortKey === field) {
+      this.sortAsc = !this.sortAsc;
+    } else {
+      this.sortKey = field;
+      this.sortAsc = true;
+    }
+    this.applySort();
+  }
+
+  private applySort() {
+    this.users.sort((a: any, b: any) => {
+      let aValue: any;
+      let bValue: any;
+      if (this.sortKey === 'group') {
+        aValue = a.group?.name || '';
+        bValue = b.group?.name || '';
+      } else {
+        aValue = a[this.sortKey];
+        bValue = b[this.sortKey];
+      }
+      if (aValue < bValue) {
+        return this.sortAsc ? -1 : 1;
+      }
+      if (aValue > bValue) {
+        return this.sortAsc ? 1 : -1;
+      }
+      return 0;
     });
   }
 }

@@ -10,9 +10,9 @@
       <table class="table table-bordered table-striped" width="100%" cellspacing="0">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>Nombre de usuario</th>
-            <th>Grupo</th>
+            <th (click)="sort('id')" style="cursor:pointer">ID</th>
+            <th (click)="sort('username')" style="cursor:pointer">Nombre de usuario</th>
+            <th (click)="sort('group')" style="cursor:pointer">Grupo</th>
             <th></th>
           </tr>
         </thead>
