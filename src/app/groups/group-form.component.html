@@ -1,6 +1,14 @@
-<form (ngSubmit)="submit()" class="mb-3">
-  <div class="mb-2">
-    <input class="form-control" [(ngModel)]="dto.name" name="name" placeholder="Group name" required>
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Agregar Grupo</h6>
   </div>
-  <button type="submit" class="btn btn-primary">Add Group</button>
-</form>
+  <div class="card-body">
+    <form (ngSubmit)="submit()" class="mb-3">
+      <div class="mb-2">
+        <label class="form-label">Nombre</label>
+        <input class="form-control" [(ngModel)]="dto.name" name="name" placeholder="Nombre del grupo" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Agregar Grupo</button>
+    </form>
+  </div>
+</div>

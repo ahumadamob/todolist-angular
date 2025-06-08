@@ -1,15 +1,25 @@
-<form (ngSubmit)="submit()" class="mb-3">
-  <div class="mb-2">
-    <input class="form-control" [(ngModel)]="dto.username" name="username" placeholder="Username" required>
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Agregar Usuario</h6>
   </div>
-  <div class="mb-2">
-    <input type="password" class="form-control" [(ngModel)]="dto.password" name="password" placeholder="Password" required>
+  <div class="card-body">
+    <form (ngSubmit)="submit()" class="mb-3">
+      <div class="mb-2">
+        <label class="form-label">Nombre de usuario</label>
+        <input class="form-control" [(ngModel)]="dto.username" name="username" placeholder="Nombre de usuario" required>
+      </div>
+      <div class="mb-2">
+        <label class="form-label">Contraseña</label>
+        <input type="password" class="form-control" [(ngModel)]="dto.password" name="password" placeholder="Contraseña" required>
+      </div>
+      <div class="mb-2">
+        <label class="form-label">Grupo</label>
+        <select class="form-select" [(ngModel)]="dto.groupId" name="groupId" required>
+          <option value="" disabled selected>Seleccione un grupo</option>
+          <option *ngFor="let g of groups" [ngValue]="g.id">{{ g.name }}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">Agregar Usuario</button>
+    </form>
   </div>
-  <div class="mb-2">
-    <select class="form-select" [(ngModel)]="dto.groupId" name="groupId" required>
-      <option value="" disabled selected>Select group</option>
-      <option *ngFor="let g of groups" [ngValue]="g.id">{{ g.name }}</option>
-    </select>
-  </div>
-  <button type="submit" class="btn btn-primary">Add User</button>
-</form>
+</div>
