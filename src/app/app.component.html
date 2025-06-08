@@ -1,26 +1,48 @@
-<div class="container my-4">
-  <h1>{{ title }}</h1>
+<div id="wrapper">
+  <!-- Sidebar -->
+  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+      <div class="sidebar-brand-text mx-3">{{ title }}</div>
+    </a>
+    <hr class="sidebar-divider my-0">
+    <li class="nav-item">
+      <a class="nav-link" href="#usuarios">
+        <i class="fas fa-users"></i>
+        <span>Usuarios</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#grupos">
+        <i class="fas fa-layer-group"></i>
+        <span>Grupos</span>
+      </a>
+    </li>
+  </ul>
 
-  <nav class="mb-3">
-    <ul class="nav">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Administración</a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#grupos">Grupos</a></li>
-          <li><a class="dropdown-item" href="#usuarios">Usuarios</a></li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+      <!-- Topbar -->
+      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+          <i class="fa fa-bars"></i>
+        </button>
+      </nav>
 
-  <div class="row">
-    <div id="usuarios" class="col-md-6">
-      <app-user-form (refresh)="userList.getUsers()"></app-user-form>
-      <app-user-list #userList></app-user-list>
-    </div>
-    <div id="grupos" class="col-md-6">
-      <app-group-form (refresh)="groupList.getGroups()"></app-group-form>
-      <app-group-list #groupList></app-group-list>
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <div class="row">
+          <div id="usuarios" class="col-lg-6">
+            <app-user-form (refresh)="userList.getUsers()"></app-user-form>
+            <app-user-list #userList></app-user-list>
+          </div>
+          <div id="grupos" class="col-lg-6">
+            <app-group-form (refresh)="groupList.getGroups()"></app-group-form>
+            <app-group-list #groupList></app-group-list>
+          </div>
+        </div>
+      </div>
+      <!-- /.container-fluid -->
     </div>
   </div>
 </div>
