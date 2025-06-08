@@ -9,6 +9,8 @@ import { UserListComponent } from './users/user-list.component';
 import { UserFormComponent } from './users/user-form.component';
 import { GroupListComponent } from './groups/group-list.component';
 import { GroupFormComponent } from './groups/group-form.component';
+import { CarreraListComponent } from './carreras/carrera-list.component';
+import { CarreraFormComponent } from './carreras/carrera-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'users', pathMatch: 'full' },
@@ -17,7 +19,10 @@ const routes: Routes = [
   { path: 'users/:id', component: UserFormComponent },
   { path: 'groups', component: GroupListComponent },
   { path: 'groups/new', component: GroupFormComponent },
-  { path: 'groups/:id', component: GroupFormComponent }
+  { path: 'groups/:id', component: GroupFormComponent },
+  { path: 'carreras', component: CarreraListComponent },
+  { path: 'carreras/new', component: CarreraFormComponent },
+  { path: 'carreras/:id', component: CarreraFormComponent }
 ];
 
 @NgModule({
@@ -26,7 +31,9 @@ const routes: Routes = [
     UserListComponent,
     UserFormComponent,
     GroupListComponent,
-    GroupFormComponent
+    GroupFormComponent,
+    CarreraListComponent,
+    CarreraFormComponent
   ],
   imports: [
     BrowserModule,
