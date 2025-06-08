@@ -1,6 +1,8 @@
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Agregar Grupo</h6>
+    <h6 class="m-0 font-weight-bold text-primary">
+      {{ editId ? 'Editar Grupo' : 'Agregar Grupo' }}
+    </h6>
   </div>
   <div class="card-body">
     <form (ngSubmit)="submit()" class="mb-3">
@@ -8,7 +10,9 @@
         <label class="form-label">Nombre</label>
         <input class="form-control" [(ngModel)]="dto.name" name="name" placeholder="Nombre del grupo" required>
       </div>
-      <button type="submit" class="btn btn-primary">Agregar Grupo</button>
+      <button type="submit" class="btn btn-primary">
+        {{ editId ? 'Actualizar Grupo' : 'Agregar Grupo' }}
+      </button>
     </form>
   </div>
 </div>

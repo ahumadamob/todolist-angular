@@ -27,6 +27,14 @@ export class GroupService {
     return this.http.post<GroupResponseDto>(this.api, dto);
   }
 
+  findById(id: number): Observable<GroupResponseDto> {
+    return this.http.get<GroupResponseDto>(`${this.api}/${id}`);
+  }
+
+  update(id: number, dto: GroupRequestDto): Observable<GroupResponseDto> {
+    return this.http.put<GroupResponseDto>(`${this.api}/${id}`, dto);
+  }
+
   delete(id: number): Observable<void> {
     return this.http.delete<void>(`${this.api}/${id}`);
   }

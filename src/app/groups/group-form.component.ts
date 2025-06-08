@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { GroupService, GroupRequestDto } from './group.service';
 
 @Component({
@@ -9,10 +9,27 @@ import { GroupService, GroupRequestDto } from './group.service';
 export class GroupFormComponent {
   dto: GroupRequestDto = { name: '' };
 
-  constructor(private groupService: GroupService, private router: Router) {}
+  constructor(
+    private groupService: GroupService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.groupService.findById(+id).subscribe(group => {
+        this.dto = { name: group.name };
+        this.editId = +id;
+      });
+    }
+  }
+
+  editId?: number;
 
   submit() {
-    this.groupService.create(this.dto).subscribe(() => {
+    const request = this.editId
+      ? this.groupService.update(this.editId, this.dto)
+      : this.groupService.create(this.dto);
+    request.subscribe(() => {
       this.router.navigate(['/groups']);
     });
   }

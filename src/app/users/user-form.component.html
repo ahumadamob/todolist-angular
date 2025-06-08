@@ -1,6 +1,8 @@
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Agregar Usuario</h6>
+    <h6 class="m-0 font-weight-bold text-primary">
+      {{ editId ? 'Editar Usuario' : 'Agregar Usuario' }}
+    </h6>
   </div>
   <div class="card-body">
     <form (ngSubmit)="submit()" class="mb-3">
@@ -19,7 +21,9 @@
           <option *ngFor="let g of groups" [ngValue]="g.id">{{ g.name }}</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-primary">Agregar Usuario</button>
+      <button type="submit" class="btn btn-primary">
+        {{ editId ? 'Actualizar Usuario' : 'Agregar Usuario' }}
+      </button>
     </form>
   </div>
 </div>

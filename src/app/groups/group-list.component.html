@@ -19,8 +19,15 @@
           <tr *ngFor="let group of groups">
             <td>{{ group.id }}</td>
             <td>{{ group.name }}</td>
-            <td>
-              <button class="btn btn-sm btn-danger" (click)="delete(group.id)">Delete</button>
+            <td class="text-nowrap">
+              <a class="btn btn-info btn-icon-split btn-sm me-1" [routerLink]="['/groups', group.id]">
+                <span class="icon text-white-50"><i class="fas fa-edit"></i></span>
+                <span class="text">Editar</span>
+              </a>
+              <button class="btn btn-danger btn-icon-split btn-sm" (click)="delete(group.id)">
+                <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                <span class="text">Eliminar</span>
+              </button>
             </td>
           </tr>
         </tbody>
