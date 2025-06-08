@@ -1,11 +1,24 @@
 <div class="container my-4">
   <h1>{{ title }}</h1>
+
+  <nav class="mb-3">
+    <ul class="nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Administración</a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#grupos">Grupos</a></li>
+          <li><a class="dropdown-item" href="#usuarios">Usuarios</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
   <div class="row">
-    <div class="col-md-6">
+    <div id="usuarios" class="col-md-6">
       <app-user-form (refresh)="userList.getUsers()"></app-user-form>
       <app-user-list #userList></app-user-list>
     </div>
-    <div class="col-md-6">
+    <div id="grupos" class="col-md-6">
       <app-group-form (refresh)="groupList.getGroups()"></app-group-form>
       <app-group-list #groupList></app-group-list>
     </div>
