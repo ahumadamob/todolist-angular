@@ -8,18 +8,30 @@
     <form (ngSubmit)="submit()" class="mb-3">
       <div class="mb-2">
         <label class="form-label">Nombre de usuario</label>
-        <input class="form-control" [(ngModel)]="dto.username" name="username" placeholder="Nombre de usuario" required>
+        <input class="form-control" [(ngModel)]="dto.username" name="username" placeholder="Nombre de usuario" required
+               [ngClass]="{ 'is-invalid': errors['username'] }">
+        <div *ngIf="errors['username']" class="invalid-feedback">
+          {{ errors['username'] }}
+        </div>
       </div>
       <div class="mb-2">
         <label class="form-label">Contraseña</label>
-        <input type="password" class="form-control" [(ngModel)]="dto.password" name="password" placeholder="Contraseña" required>
+        <input type="password" class="form-control" [(ngModel)]="dto.password" name="password" placeholder="Contraseña" required
+               [ngClass]="{ 'is-invalid': errors['password'] }">
+        <div *ngIf="errors['password']" class="invalid-feedback">
+          {{ errors['password'] }}
+        </div>
       </div>
       <div class="mb-2">
         <label class="form-label">Grupo</label>
-        <select class="form-select" [(ngModel)]="dto.groupId" name="groupId" required>
+        <select class="form-select" [(ngModel)]="dto.groupId" name="groupId" required
+                [ngClass]="{ 'is-invalid': errors['groupId'] }">
           <option value="" disabled selected>Seleccione un grupo</option>
           <option *ngFor="let g of groups" [ngValue]="g.id">{{ g.name }}</option>
         </select>
+        <div *ngIf="errors['groupId']" class="invalid-feedback">
+          {{ errors['groupId'] }}
+        </div>
       </div>
       <button type="submit" class="btn btn-primary">
         {{ editId ? 'Actualizar Usuario' : 'Agregar Usuario' }}

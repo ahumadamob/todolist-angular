@@ -11,6 +11,7 @@ export class UserFormComponent {
 
   dto: UserRequestDto = { username: '', password: '', groupId: 0 };
   groups: GroupResponseDto[] = [];
+  errors: Record<string, string> = {};
 
   constructor(
     private userService: UserService,
@@ -31,11 +32,20 @@ export class UserFormComponent {
   editId?: number;
 
   submit() {
+    this.errors = {};
     const request = this.editId
       ? this.userService.update(this.editId, this.dto)
       : this.userService.create(this.dto);
-    request.subscribe(() => {
-      this.router.navigate(['/users']);
+    request.subscribe({
+      next: () => {
+        this.router.navigate(['/users']);
+      },
+      error: err => {
+        const detail = err.error?.detail;
+        if (detail?.field) {
+          this.errors[detail.field] = detail.value;
+        }
+      }
     });
   }
 }
