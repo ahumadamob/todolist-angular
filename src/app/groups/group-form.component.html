@@ -8,7 +8,11 @@
     <form (ngSubmit)="submit()" class="mb-3">
       <div class="mb-2">
         <label class="form-label">Nombre</label>
-        <input class="form-control" [(ngModel)]="dto.name" name="name" placeholder="Nombre del grupo" required>
+        <input class="form-control" [(ngModel)]="dto.name" name="name" placeholder="Nombre del grupo" required
+               [ngClass]="{ 'is-invalid': errors['name'] }">
+        <div *ngIf="errors['name']" class="invalid-feedback">
+          {{ errors['name'] }}
+        </div>
       </div>
       <button type="submit" class="btn btn-primary">
         {{ editId ? 'Actualizar Grupo' : 'Agregar Grupo' }}
