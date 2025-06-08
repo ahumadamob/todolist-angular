@@ -28,7 +28,8 @@ export class GroupService {
   }
 
   findById(id: number): Observable<GroupResponseDto> {
-    return this.http.get<GroupResponseDto>(`${this.api}/${id}`);
+    return this.http.get<{ data: GroupResponseDto }>(`${this.api}/${id}`)
+      .pipe(map(res => res.data));
   }
 
   update(id: number, dto: GroupRequestDto): Observable<GroupResponseDto> {

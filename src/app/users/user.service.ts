@@ -32,7 +32,8 @@ export class UserService {
   }
 
   findById(id: number): Observable<UserResponseDto> {
-    return this.http.get<UserResponseDto>(`${this.api}/${id}`);
+    return this.http.get<{ data: UserResponseDto }>(`${this.api}/${id}`)
+      .pipe(map(res => res.data));
   }
 
   create(dto: UserRequestDto): Observable<UserResponseDto> {
