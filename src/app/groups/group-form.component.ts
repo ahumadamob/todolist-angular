@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { GroupService, GroupRequestDto } from './group.service';
 
 @Component({
@@ -6,15 +7,13 @@ import { GroupService, GroupRequestDto } from './group.service';
   templateUrl: './group-form.component.html'
 })
 export class GroupFormComponent {
-  @Output() refresh = new EventEmitter<void>();
   dto: GroupRequestDto = { name: '' };
 
-  constructor(private groupService: GroupService) {}
+  constructor(private groupService: GroupService, private router: Router) {}
 
   submit() {
     this.groupService.create(this.dto).subscribe(() => {
-      this.dto = { name: '' };
-      this.refresh.emit();
+      this.router.navigate(['/groups']);
     });
   }
 }

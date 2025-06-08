@@ -6,13 +6,13 @@
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item">
-      <a class="nav-link" href="#usuarios">
+      <a class="nav-link" routerLink="/users">
         <i class="fas fa-users"></i>
         <span>Usuarios</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#grupos">
+      <a class="nav-link" routerLink="/groups">
         <i class="fas fa-layer-group"></i>
         <span>Grupos</span>
       </a>
@@ -31,16 +31,7 @@
 
       <!-- Begin Page Content -->
       <div class="container-fluid">
-        <div class="row">
-          <div id="usuarios" class="col-lg-6">
-            <app-user-form (refresh)="userList.getUsers()"></app-user-form>
-            <app-user-list #userList></app-user-list>
-          </div>
-          <div id="grupos" class="col-lg-6">
-            <app-group-form (refresh)="groupList.getGroups()"></app-group-form>
-            <app-group-list #groupList></app-group-list>
-          </div>
-        </div>
+        <router-outlet></router-outlet>
       </div>
       <!-- /.container-fluid -->
     </div>
