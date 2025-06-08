@@ -1,0 +1,18 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let group of groups">
+      <td>{{ group.id }}</td>
+      <td>{{ group.name }}</td>
+      <td>
+        <button class="btn btn-sm btn-danger" (click)="delete(group.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
