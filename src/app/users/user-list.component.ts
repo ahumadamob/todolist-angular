@@ -7,6 +7,8 @@ import { UserService, UserResponseDto } from './user.service';
 })
 export class UserListComponent implements OnInit {
   users: UserResponseDto[] = [];
+  deleteId?: number;
+  modal: any;
 
   constructor(private userService: UserService) {}
 
@@ -18,7 +20,24 @@ export class UserListComponent implements OnInit {
     this.userService.findAll().subscribe(users => this.users = users);
   }
 
-  delete(id: number) {
-    this.userService.delete(id).subscribe(() => this.getUsers());
+  confirmDelete(id: number) {
+    this.deleteId = id;
+    const el = document.getElementById('userDeleteModal');
+    if (el) {
+      this.modal = new (window as any).bootstrap.Modal(el);
+      this.modal.show();
+    }
+  }
+
+  deleteConfirmed() {
+    if (!this.deleteId) {
+      return;
+    }
+    this.userService.delete(this.deleteId).subscribe(() => {
+      this.getUsers();
+      if (this.modal) {
+        this.modal.hide();
+      }
+    });
   }
 }
