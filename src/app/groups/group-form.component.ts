@@ -37,7 +37,14 @@ export class GroupFormComponent {
       },
       error: err => {
         const detail = err.error?.detail;
-        if (detail?.field) {
+        const messages = detail?.messages || err.error?.messages;
+        if (Array.isArray(messages)) {
+          for (const m of messages) {
+            if (m.field) {
+              this.errors[m.field] = m.value;
+            }
+          }
+        } else if (detail?.field) {
           this.errors[detail.field] = detail.value;
         }
       }
