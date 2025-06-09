@@ -1,9 +1,9 @@
 <div class="mb-2 text-end">
-  <a class="btn btn-primary" routerLink="/users/new">Agregar Usuario</a>
+  <a class="btn btn-primary" routerLink="/materias/new">Agregar Materia</a>
 </div>
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-    <h6 class="m-0 font-weight-bold text-primary">Usuarios</h6>
+    <h6 class="m-0 font-weight-bold text-primary">Materias</h6>
   </div>
   <div class="card-body">
     <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible" role="alert">
@@ -15,22 +15,28 @@
         <thead>
           <tr>
             <th (click)="sort('id')" style="cursor:pointer">ID</th>
-            <th (click)="sort('username')" style="cursor:pointer">Nombre de usuario</th>
-            <th (click)="sort('group')" style="cursor:pointer">Grupo</th>
+            <th (click)="sort('nombre')" style="cursor:pointer">Nombre</th>
+            <th (click)="sort('carrera')" style="cursor:pointer">Carrera</th>
+            <th>Correlativas</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of users">
-            <td>{{ user.id }}</td>
-            <td>{{ user.username }}</td>
-            <td>{{ user.group?.name }}</td>
+          <tr *ngFor="let materia of materias">
+            <td>{{ materia.id }}</td>
+            <td>{{ materia.nombre }}</td>
+            <td>{{ materia.carrera?.nombre }}</td>
+            <td>
+              <span *ngFor="let corr of materia.correlativas; let last = last">
+                {{ corr.nombre }}<span *ngIf="!last">, </span>
+              </span>
+            </td>
             <td class="text-nowrap">
-              <a class="btn btn-info btn-icon-split btn-sm me-1" [routerLink]="['/users', user.id]">
+              <a class="btn btn-info btn-icon-split btn-sm me-1" [routerLink]="['/materias', materia.id]">
                 <span class="icon text-white-50"><i class="fas fa-edit"></i></span>
                 <span class="text">Editar</span>
               </a>
-              <button class="btn btn-danger btn-icon-split btn-sm" (click)="confirmDelete(user.id)">
+              <button class="btn btn-danger btn-icon-split btn-sm" (click)="confirmDelete(materia.id)">
                 <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
                 <span class="text">Eliminar</span>
               </button>
@@ -43,7 +49,7 @@
 </div>
 
 <!-- Confirm Delete Modal -->
-<div class="modal fade" id="userDeleteModal" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="materiaDeleteModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

@@ -9,6 +9,7 @@ export class GroupListComponent implements OnInit {
   groups: GroupResponseDto[] = [];
   deleteId?: number;
   modal: any;
+  errorMessage = '';
   sortKey: 'id' | 'name' = 'id';
   sortAsc = true;
 
@@ -38,10 +39,21 @@ export class GroupListComponent implements OnInit {
     if (!this.deleteId) {
       return;
     }
-    this.groupService.delete(this.deleteId).subscribe(() => {
-      this.getGroups();
-      if (this.modal) {
-        this.modal.hide();
+    this.groupService.delete(this.deleteId).subscribe({
+      next: () => {
+        this.getGroups();
+        if (this.modal) {
+          this.modal.hide();
+        }
+      },
+      error: err => {
+        if (err.status === 409) {
+          if (this.modal) {
+            this.modal.hide();
+          }
+          const backendMsg = typeof err.error === 'string' ? err.error : err.error?.message;
+          this.errorMessage = backendMsg || 'No se puede eliminar el registro';
+        }
       }
     });
   }
