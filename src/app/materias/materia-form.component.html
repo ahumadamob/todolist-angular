@@ -1,0 +1,43 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">
+      {{ editId ? 'Editar Materia' : 'Agregar Materia' }}
+    </h6>
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="submit()" class="mb-3">
+      <div class="mb-2">
+        <label class="form-label">Nombre</label>
+        <input class="form-control" [(ngModel)]="dto.nombre" name="nombre" placeholder="Nombre de la materia" required
+               [ngClass]="{ 'is-invalid': errors['nombre'] }">
+        <div *ngIf="errors['nombre']" class="invalid-feedback">
+          {{ errors['nombre'] }}
+        </div>
+      </div>
+      <div class="mb-2">
+        <label class="form-label">Carrera</label>
+        <select class="form-select" [(ngModel)]="dto.carreraId" name="carreraId" required
+                [ngClass]="{ 'is-invalid': errors['carreraId'] }">
+          <option value="" disabled selected>Seleccione una carrera</option>
+          <option *ngFor="let c of carreras" [ngValue]="c.id">{{ c.nombre }}</option>
+        </select>
+        <div *ngIf="errors['carreraId']" class="invalid-feedback">
+          {{ errors['carreraId'] }}
+        </div>
+      </div>
+      <div class="mb-2">
+        <label class="form-label">Correlativas</label>
+        <select multiple class="form-select" [(ngModel)]="dto.correlativaIds" name="correlativaIds"
+                [ngClass]="{ 'is-invalid': errors['correlativaIds'] }">
+          <option *ngFor="let m of materias" [ngValue]="m.id">{{ m.nombre }}</option>
+        </select>
+        <div *ngIf="errors['correlativaIds']" class="invalid-feedback">
+          {{ errors['correlativaIds'] }}
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">
+        {{ editId ? 'Actualizar Materia' : 'Agregar Materia' }}
+      </button>
+    </form>
+  </div>
+</div>

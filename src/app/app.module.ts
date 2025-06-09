@@ -11,6 +11,8 @@ import { GroupListComponent } from './groups/group-list.component';
 import { GroupFormComponent } from './groups/group-form.component';
 import { CarreraListComponent } from './carreras/carrera-list.component';
 import { CarreraFormComponent } from './carreras/carrera-form.component';
+import { MateriaListComponent } from './materias/materia-list.component';
+import { MateriaFormComponent } from './materias/materia-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'users', pathMatch: 'full' },
@@ -22,7 +24,10 @@ const routes: Routes = [
   { path: 'groups/:id', component: GroupFormComponent },
   { path: 'carreras', component: CarreraListComponent },
   { path: 'carreras/new', component: CarreraFormComponent },
-  { path: 'carreras/:id', component: CarreraFormComponent }
+  { path: 'carreras/:id', component: CarreraFormComponent },
+  { path: 'materias', component: MateriaListComponent },
+  { path: 'materias/new', component: MateriaFormComponent },
+  { path: 'materias/:id', component: MateriaFormComponent }
 ];
 
 @NgModule({
@@ -33,7 +38,9 @@ const routes: Routes = [
     GroupListComponent,
     GroupFormComponent,
     CarreraListComponent,
-    CarreraFormComponent
+    CarreraFormComponent,
+    MateriaListComponent,
+    MateriaFormComponent
   ],
   imports: [
     BrowserModule,
