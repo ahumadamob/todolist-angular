@@ -1,0 +1,22 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">
+      {{ editId ? 'Editar Grupo' : 'Agregar Grupo' }}
+    </h6>
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="submit()" class="mb-3">
+      <div class="mb-2">
+        <label class="form-label">Nombre</label>
+        <input class="form-control" [(ngModel)]="dto.name" name="name" placeholder="Nombre del grupo" required
+               [ngClass]="{ 'is-invalid': errors['name'] }">
+        <div *ngIf="errors['name']" class="invalid-feedback">
+          {{ errors['name'] }}
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">
+        {{ editId ? 'Actualizar Grupo' : 'Agregar Grupo' }}
+      </button>
+    </form>
+  </div>
+</div>

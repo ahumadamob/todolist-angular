@@ -1,0 +1,46 @@
+<div id="wrapper">
+  <!-- Sidebar -->
+  <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
+      <div class="sidebar-brand-text mx-3">{{ title }}</div>
+    </a>
+    <hr class="sidebar-divider my-0">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/users">
+        <i class="fas fa-users"></i>
+        <span>Usuarios</span>
+      </a>
+    </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/groups">
+          <i class="fas fa-layer-group"></i>
+          <span>Grupos</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/carreras">
+          <i class="fas fa-graduation-cap"></i>
+          <span>Carreras</span>
+        </a>
+      </li>
+    </ul>
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content">
+      <!-- Topbar -->
+      <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+          <i class="fa fa-bars"></i>
+        </button>
+        <span class="navbar-brand mb-0 h1">{{ title }}</span>
+      </nav>
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <router-outlet></router-outlet>
+      </div>
+      <!-- /.container-fluid -->
+    </div>
+  </div>
+</div>

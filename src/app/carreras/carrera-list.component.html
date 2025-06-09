@@ -1,0 +1,56 @@
+<div class="mb-2 text-end">
+  <a class="btn btn-primary" routerLink="/carreras/new">Agregar Carrera</a>
+</div>
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Carreras</h6>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th (click)="sort('id')" style="cursor:pointer">ID</th>
+            <th (click)="sort('nombre')" style="cursor:pointer">Nombre</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let carrera of carreras">
+            <td>{{ carrera.id }}</td>
+            <td>{{ carrera.nombre }}</td>
+            <td class="text-nowrap">
+              <a class="btn btn-info btn-icon-split btn-sm me-1" [routerLink]="['/carreras', carrera.id]">
+                <span class="icon text-white-50"><i class="fas fa-edit"></i></span>
+                <span class="text">Editar</span>
+              </a>
+              <button class="btn btn-danger btn-icon-split btn-sm" (click)="confirmDelete(carrera.id)">
+                <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                <span class="text">Eliminar</span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Delete Modal -->
+<div class="modal fade" id="carreraDeleteModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmar eliminación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ¿Estás seguro que deseas eliminar este registro?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="deleteConfirmed()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>

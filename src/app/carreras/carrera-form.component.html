@@ -1,0 +1,22 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">
+      {{ editId ? 'Editar Carrera' : 'Agregar Carrera' }}
+    </h6>
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="submit()" class="mb-3">
+      <div class="mb-2">
+        <label class="form-label">Nombre</label>
+        <input class="form-control" [(ngModel)]="dto.nombre" name="nombre" placeholder="Nombre de la carrera" required
+               [ngClass]="{ 'is-invalid': errors['nombre'] }">
+        <div *ngIf="errors['nombre']" class="invalid-feedback">
+          {{ errors['nombre'] }}
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">
+        {{ editId ? 'Actualizar Carrera' : 'Agregar Carrera' }}
+      </button>
+    </form>
+  </div>
+</div>
