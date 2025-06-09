@@ -9,6 +9,7 @@ export class UserListComponent implements OnInit {
   users: UserResponseDto[] = [];
   deleteId?: number;
   modal: any;
+  errorMessage = '';
   sortKey: 'id' | 'username' | 'group' = 'id';
   sortAsc = true;
 
@@ -38,10 +39,20 @@ export class UserListComponent implements OnInit {
     if (!this.deleteId) {
       return;
     }
-    this.userService.delete(this.deleteId).subscribe(() => {
-      this.getUsers();
-      if (this.modal) {
-        this.modal.hide();
+    this.userService.delete(this.deleteId).subscribe({
+      next: () => {
+        this.getUsers();
+        if (this.modal) {
+          this.modal.hide();
+        }
+      },
+      error: err => {
+        if (err.status === 409) {
+          if (this.modal) {
+            this.modal.hide();
+          }
+          this.errorMessage = err.error?.message || 'No se puede eliminar el registro';
+        }
       }
     });
   }

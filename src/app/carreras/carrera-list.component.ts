@@ -9,6 +9,7 @@ export class CarreraListComponent implements OnInit {
   carreras: CarreraResponseDto[] = [];
   deleteId?: number;
   modal: any;
+  errorMessage = '';
   sortKey: 'id' | 'nombre' = 'id';
   sortAsc = true;
 
@@ -38,10 +39,20 @@ export class CarreraListComponent implements OnInit {
     if (!this.deleteId) {
       return;
     }
-    this.carreraService.delete(this.deleteId).subscribe(() => {
-      this.getCarreras();
-      if (this.modal) {
-        this.modal.hide();
+    this.carreraService.delete(this.deleteId).subscribe({
+      next: () => {
+        this.getCarreras();
+        if (this.modal) {
+          this.modal.hide();
+        }
+      },
+      error: err => {
+        if (err.status === 409) {
+          if (this.modal) {
+            this.modal.hide();
+          }
+          this.errorMessage = err.error?.message || 'No se puede eliminar el registro';
+        }
       }
     });
   }

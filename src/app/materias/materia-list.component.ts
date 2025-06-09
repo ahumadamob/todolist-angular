@@ -9,6 +9,7 @@ export class MateriaListComponent implements OnInit {
   materias: MateriaResponseDto[] = [];
   deleteId?: number;
   modal: any;
+  errorMessage = '';
   sortKey: 'id' | 'nombre' | 'carrera' = 'id';
   sortAsc = true;
 
@@ -38,10 +39,20 @@ export class MateriaListComponent implements OnInit {
     if (!this.deleteId) {
       return;
     }
-    this.materiaService.delete(this.deleteId).subscribe(() => {
-      this.getMaterias();
-      if (this.modal) {
-        this.modal.hide();
+    this.materiaService.delete(this.deleteId).subscribe({
+      next: () => {
+        this.getMaterias();
+        if (this.modal) {
+          this.modal.hide();
+        }
+      },
+      error: err => {
+        if (err.status === 409) {
+          if (this.modal) {
+            this.modal.hide();
+          }
+          this.errorMessage = err.error?.message || 'No se puede eliminar el registro';
+        }
       }
     });
   }
