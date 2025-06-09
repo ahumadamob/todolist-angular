@@ -51,7 +51,8 @@ export class CarreraListComponent implements OnInit {
           if (this.modal) {
             this.modal.hide();
           }
-          this.errorMessage = err.error?.message || 'No se puede eliminar el registro';
+          const backendMsg = typeof err.error === 'string' ? err.error : err.error?.message;
+          this.errorMessage = backendMsg || 'No se puede eliminar el registro';
         }
       }
     });
