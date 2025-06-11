@@ -17,6 +17,8 @@ import { AlumnoListComponent } from './alumnos/alumno-list.component';
 import { AlumnoFormComponent } from './alumnos/alumno-form.component';
 import { ProfesorListComponent } from './profesores/profesor-list.component';
 import { ProfesorFormComponent } from './profesores/profesor-form.component';
+import { AnioAcademicoListComponent } from './anios-academicos/anio-academico-list.component';
+import { AnioAcademicoFormComponent } from './anios-academicos/anio-academico-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'users', pathMatch: 'full' },
@@ -37,7 +39,10 @@ const routes: Routes = [
   { path: 'alumnos/:id', component: AlumnoFormComponent },
   { path: 'profesores', component: ProfesorListComponent },
   { path: 'profesores/new', component: ProfesorFormComponent },
-  { path: 'profesores/:id', component: ProfesorFormComponent }
+  { path: 'profesores/:id', component: ProfesorFormComponent },
+  { path: 'anios-academicos', component: AnioAcademicoListComponent },
+  { path: 'anios-academicos/new', component: AnioAcademicoFormComponent },
+  { path: 'anios-academicos/:id', component: AnioAcademicoFormComponent }
 ];
 
 @NgModule({
@@ -54,7 +59,9 @@ const routes: Routes = [
     AlumnoListComponent,
     AlumnoFormComponent,
     ProfesorListComponent,
-    ProfesorFormComponent
+    ProfesorFormComponent,
+    AnioAcademicoListComponent,
+    AnioAcademicoFormComponent
   ],
   imports: [
     BrowserModule,
