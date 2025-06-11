@@ -13,6 +13,10 @@ import { CarreraListComponent } from './carreras/carrera-list.component';
 import { CarreraFormComponent } from './carreras/carrera-form.component';
 import { MateriaListComponent } from './materias/materia-list.component';
 import { MateriaFormComponent } from './materias/materia-form.component';
+import { AlumnoListComponent } from './alumnos/alumno-list.component';
+import { AlumnoFormComponent } from './alumnos/alumno-form.component';
+import { ProfesorListComponent } from './profesores/profesor-list.component';
+import { ProfesorFormComponent } from './profesores/profesor-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'users', pathMatch: 'full' },
@@ -27,7 +31,13 @@ const routes: Routes = [
   { path: 'carreras/:id', component: CarreraFormComponent },
   { path: 'materias', component: MateriaListComponent },
   { path: 'materias/new', component: MateriaFormComponent },
-  { path: 'materias/:id', component: MateriaFormComponent }
+  { path: 'materias/:id', component: MateriaFormComponent },
+  { path: 'alumnos', component: AlumnoListComponent },
+  { path: 'alumnos/new', component: AlumnoFormComponent },
+  { path: 'alumnos/:id', component: AlumnoFormComponent },
+  { path: 'profesores', component: ProfesorListComponent },
+  { path: 'profesores/new', component: ProfesorFormComponent },
+  { path: 'profesores/:id', component: ProfesorFormComponent }
 ];
 
 @NgModule({
@@ -40,7 +50,11 @@ const routes: Routes = [
     CarreraListComponent,
     CarreraFormComponent,
     MateriaListComponent,
-    MateriaFormComponent
+    MateriaFormComponent,
+    AlumnoListComponent,
+    AlumnoFormComponent,
+    ProfesorListComponent,
+    ProfesorFormComponent
   ],
   imports: [
     BrowserModule,
