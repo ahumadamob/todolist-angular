@@ -1,0 +1,38 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">
+      {{ editId ? 'Editar Profesor' : 'Agregar Profesor' }}
+    </h6>
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="submit()" class="mb-3">
+      <div class="mb-2">
+        <label class="form-label">Nombre</label>
+        <input class="form-control" [(ngModel)]="dto.nombre" name="nombre" placeholder="Nombre del profesor" required
+               [ngClass]="{ 'is-invalid': errors['nombre'] }">
+        <div *ngIf="errors['nombre']" class="invalid-feedback">
+          {{ errors['nombre'] }}
+        </div>
+      </div>
+      <div class="mb-2">
+        <label class="form-label">Apellido</label>
+        <input class="form-control" [(ngModel)]="dto.apellido" name="apellido" placeholder="Apellido del profesor" required
+               [ngClass]="{ 'is-invalid': errors['apellido'] }">
+        <div *ngIf="errors['apellido']" class="invalid-feedback">
+          {{ errors['apellido'] }}
+        </div>
+      </div>
+      <div class="mb-2">
+        <label class="form-label">Foto de Perfil</label>
+        <input class="form-control" [(ngModel)]="dto.fotoPerfil" name="fotoPerfil" placeholder="URL de la foto" required
+               [ngClass]="{ 'is-invalid': errors['fotoPerfil'] }">
+        <div *ngIf="errors['fotoPerfil']" class="invalid-feedback">
+          {{ errors['fotoPerfil'] }}
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">
+        {{ editId ? 'Actualizar Profesor' : 'Agregar Profesor' }}
+      </button>
+    </form>
+  </div>
+</div>
