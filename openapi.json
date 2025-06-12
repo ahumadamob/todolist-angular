@@ -1,0 +1,117 @@
+{
+  "openapi": "3.0.1",
+  "info": {"title": "OpenAPI definition", "version": "v0"},
+  "servers": [{"url": "http://localhost:8080", "description": "Generated server url"}],
+  "paths": {
+    "/users/{id}": {
+      "get": {"tags": ["user-controller"], "operationId": "findById", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"type": "object"}}}}}},
+      "put": {"tags": ["user-controller"], "operationId": "update", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/UserRequestDto"}}}, "required": true}, "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoUserResponseDto"}}}}}},
+      "delete": {"tags": ["user-controller"], "operationId": "delete", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoVoid"}}}}}}
+    },
+    "/profesores/{id}": {
+      "get": {"tags": ["profesor-controller"], "operationId": "findById_1", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"type": "object"}}}}}},
+      "put": {"tags": ["profesor-controller"], "operationId": "update_1", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/ProfesorRequestDto"}}}, "required": true}, "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoProfesorResponseDto"}}}}}},
+      "delete": {"tags": ["profesor-controller"], "operationId": "delete_1", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoVoid"}}}}}}
+    },
+    "/materias/{id}": {
+      "get": {"tags": ["materia-controller"], "operationId": "findById_2", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"type": "object"}}}}}},
+      "put": {"tags": ["materia-controller"], "operationId": "update_2", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/MateriaRequestDto"}}}, "required": true}, "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoMateriaResponseDto"}}}}}},
+      "delete": {"tags": ["materia-controller"], "operationId": "delete_2", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoVoid"}}}}}}
+    },
+    "/groups/{id}": {
+      "get": {"tags": ["group-controller"], "operationId": "findById_3", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"type": "object"}}}}}},
+      "put": {"tags": ["group-controller"], "operationId": "update_3", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/GroupRequestDto"}}}, "required": true}, "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoGroupResponseDto"}}}}}},
+      "delete": {"tags": ["group-controller"], "operationId": "delete_3", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoVoid"}}}}}}
+    },
+    "/cursos/{id}": {
+      "get": {"tags": ["curso-controller"], "operationId": "findById_4", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"type": "object"}}}}}},
+      "put": {"tags": ["curso-controller"], "operationId": "update_4", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/CursoRequestDto"}}}, "required": true}, "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoCursoResponseDto"}}}}}},
+      "delete": {"tags": ["curso-controller"], "operationId": "delete_4", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoVoid"}}}}}}
+    },
+    "/carreras/{id}": {
+      "get": {"tags": ["carrera-controller"], "operationId": "findById_5", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"type": "object"}}}}}},
+      "put": {"tags": ["carrera-controller"], "operationId": "update_5", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/CarreraRequestDto"}}}, "required": true}, "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoCarreraResponseDto"}}}}}},
+      "delete": {"tags": ["carrera-controller"], "operationId": "delete_5", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoVoid"}}}}}}
+    },
+    "/anios-academicos/{id}": {
+      "get": {"tags": ["anio-academico-controller"], "operationId": "findById_6", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"type": "object"}}}}}},
+      "put": {"tags": ["anio-academico-controller"], "operationId": "update_6", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/AnioAcademicoRequestDto"}}}, "required": true}, "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoAnioAcademicoResponseDto"}}}}}},
+      "delete": {"tags": ["anio-academico-controller"], "operationId": "delete_6", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoVoid"}}}}}}
+    },
+    "/alumnos/{id}": {
+      "get": {"tags": ["alumno-controller"], "operationId": "findById_7", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"type": "object"}}}}}},
+      "put": {"tags": ["alumno-controller"], "operationId": "update_7", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/AlumnoRequestDto"}}}, "required": true}, "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoAlumnoResponseDto"}}}}}},
+      "delete": {"tags": ["alumno-controller"], "operationId": "delete_7", "parameters": [{"name": "id", "in": "path", "required": true, "schema": {"type": "integer", "format": "int64"}}], "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoVoid"}}}}}}
+    },
+    "/users": {
+      "get": {"tags": ["user-controller"], "operationId": "findAll", "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoListUserResponseDto"}}}}}},
+      "post": {"tags": ["user-controller"], "operationId": "create", "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/UserRequestDto"}}}, "required": true}, "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoUserResponseDto"}}}}}}
+    },
+    "/profesores": {
+      "get": {"tags": ["profesor-controller"], "operationId": "findAll_1", "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoListProfesorResponseDto"}}}}}},
+      "post": {"tags": ["profesor-controller"], "operationId": "create_1", "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/ProfesorRequestDto"}}}, "required": true}, "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoProfesorResponseDto"}}}}}}
+    },
+    "/materias": {
+      "get": {"tags": ["materia-controller"], "operationId": "findAll_2", "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoListMateriaResponseDto"}}}}}},
+      "post": {"tags": ["materia-controller"], "operationId": "create_2", "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/MateriaRequestDto"}}}, "required": true}, "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoMateriaResponseDto"}}}}}}
+    },
+    "/groups": {
+      "get": {"tags": ["group-controller"], "operationId": "findAll_3", "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoListGroupResponseDto"}}}}}},
+      "post": {"tags": ["group-controller"], "operationId": "create_3", "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/GroupRequestDto"}}}, "required": true}, "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoGroupResponseDto"}}}}}}
+    },
+    "/cursos": {
+      "get": {"tags": ["curso-controller"], "operationId": "findAll_4", "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoListCursoResponseDto"}}}}}},
+      "post": {"tags": ["curso-controller"], "operationId": "create_4", "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/CursoRequestDto"}}}, "required": true}, "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoCursoResponseDto"}}}}}}
+    },
+    "/carreras": {
+      "get": {"tags": ["carrera-controller"], "operationId": "findAll_5", "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoListCarreraResponseDto"}}}}}},
+      "post": {"tags": ["carrera-controller"], "operationId": "create_5", "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/CarreraRequestDto"}}}, "required": true}, "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoCarreraResponseDto"}}}}}}
+    },
+    "/anios-academicos": {
+      "get": {"tags": ["anio-academico-controller"], "operationId": "findAll_6", "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoListAnioAcademicoResponseDto"}}}}}},
+      "post": {"tags": ["anio-academico-controller"], "operationId": "create_6", "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/AnioAcademicoRequestDto"}}}, "required": true}, "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoAnioAcademicoResponseDto"}}}}}}
+    },
+    "/alumnos": {
+      "get": {"tags": ["alumno-controller"], "operationId": "findAll_7", "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoListAlumnoResponseDto"}}}}}},
+      "post": {"tags": ["alumno-controller"], "operationId": "create_7", "requestBody": {"content": {"application/json": {"schema": {"$ref": "#/components/schemas/AlumnoRequestDto"}}}, "required": true}, "responses": {"200": {"description": "OK", "content": {"*/*": {"schema": {"$ref": "#/components/schemas/SuccessResponseDtoAlumnoResponseDto"}}}}}}
+    }
+  },
+  "components": {
+    "schemas": {
+      "UserRequestDto": {"type": "object", "properties": {"username": {"type": "string"}, "password": {"type": "string"}, "groupId": {"type": "integer", "format": "int64"}}},
+      "GroupResponseDto": {"type": "object", "properties": {"id": {"type": "integer", "format": "int64"}, "name": {"type": "string"}}},
+      "SuccessResponseDtoUserResponseDto": {"type": "object", "properties": {"message": {"type": "string"}, "data": {"$ref": "#/components/schemas/UserResponseDto"}}},
+      "UserResponseDto": {"type": "object", "properties": {"id": {"type": "integer", "format": "int64"}, "username": {"type": "string"}, "group": {"$ref": "#/components/schemas/GroupResponseDto"}}},
+      "ProfesorRequestDto": {"type": "object", "properties": {"nombre": {"type": "string"}, "apellido": {"type": "string"}, "fotoPerfil": {"type": "string"}}},
+      "ProfesorResponseDto": {"type": "object", "properties": {"id": {"type": "integer", "format": "int64"}, "nombre": {"type": "string"}, "apellido": {"type": "string"}, "fotoPerfil": {"type": "string"}}},
+      "SuccessResponseDtoProfesorResponseDto": {"type": "object", "properties": {"message": {"type": "string"}, "data": {"$ref": "#/components/schemas/ProfesorResponseDto"}}},
+      "MateriaRequestDto": {"type": "object", "properties": {"nombre": {"type": "string"}, "carreraId": {"type": "integer", "format": "int64"}, "correlativaIds": {"type": "array", "items": {"type": "integer", "format": "int64"}}}},
+      "CarreraResponseDto": {"type": "object", "properties": {"id": {"type": "integer", "format": "int64"}, "nombre": {"type": "string"}}},
+      "MateriaRefDto": {"type": "object", "properties": {"id": {"type": "integer", "format": "int64"}, "nombre": {"type": "string"}}},
+      "MateriaResponseDto": {"type": "object", "properties": {"id": {"type": "integer", "format": "int64"}, "nombre": {"type": "string"}, "carrera": {"$ref": "#/components/schemas/CarreraResponseDto"}, "correlativas": {"type": "array", "items": {"$ref": "#/components/schemas/MateriaRefDto"}}}},
+      "SuccessResponseDtoMateriaResponseDto": {"type": "object", "properties": {"message": {"type": "string"}, "data": {"$ref": "#/components/schemas/MateriaResponseDto"}}},
+      "GroupRequestDto": {"type": "object", "properties": {"name": {"type": "string"}}},
+      "SuccessResponseDtoGroupResponseDto": {"type": "object", "properties": {"message": {"type": "string"}, "data": {"$ref": "#/components/schemas/GroupResponseDto"}}},
+      "CursoRequestDto": {"type": "object", "properties": {"anioCursado": {"type": "integer", "format": "int32"}, "division": {"type": "string"}, "anioAcademicoId": {"type": "integer", "format": "int64"}}},
+      "AnioAcademicoResponseDto": {"type": "object", "properties": {"id": {"type": "integer", "format": "int64"}, "anio": {"type": "integer", "format": "int32"}, "activo": {"type": "boolean"}}},
+      "CursoResponseDto": {"type": "object", "properties": {"id": {"type": "integer", "format": "int64"}, "anioCursado": {"type": "integer", "format": "int32"}, "division": {"type": "string"}, "anioAcademico": {"$ref": "#/components/schemas/AnioAcademicoResponseDto"}}},
+      "SuccessResponseDtoCursoResponseDto": {"type": "object", "properties": {"message": {"type": "string"}, "data": {"$ref": "#/components/schemas/CursoResponseDto"}}},
+      "CarreraRequestDto": {"type": "object", "properties": {"nombre": {"type": "string"}}},
+      "SuccessResponseDtoCarreraResponseDto": {"type": "object", "properties": {"message": {"type": "string"}, "data": {"$ref": "#/components/schemas/CarreraResponseDto"}}},
+      "AnioAcademicoRequestDto": {"type": "object", "properties": {"anio": {"type": "integer", "format": "int32"}, "activo": {"type": "boolean"}}},
+      "SuccessResponseDtoAnioAcademicoResponseDto": {"type": "object", "properties": {"message": {"type": "string"}, "data": {"$ref": "#/components/schemas/AnioAcademicoResponseDto"}}},
+      "AlumnoRequestDto": {"type": "object", "properties": {"nombre": {"type": "string"}, "apellido": {"type": "string"}, "fotoPerfil": {"type": "string"}}},
+      "AlumnoResponseDto": {"type": "object", "properties": {"id": {"type": "integer", "format": "int64"}, "nombre": {"type": "string"}, "apellido": {"type": "string"}, "fotoPerfil": {"type": "string"}}},
+      "SuccessResponseDtoAlumnoResponseDto": {"type": "object", "properties": {"message": {"type": "string"}, "data": {"$ref": "#/components/schemas/AlumnoResponseDto"}}},
+      "SuccessResponseDtoListUserResponseDto": {"type": "object", "properties": {"message": {"type": "string"}, "data": {"type": "array", "items": {"$ref": "#/components/schemas/UserResponseDto"}}}},
+      "SuccessResponseDtoListProfesorResponseDto": {"type": "object", "properties": {"message": {"type": "string"}, "data": {"type": "array", "items": {"$ref": "#/components/schemas/ProfesorResponseDto"}}}},
+      "SuccessResponseDtoListMateriaResponseDto": {"type": "object", "properties": {"message": {"type": "string"}, "data": {"type": "array", "items": {"$ref": "#/components/schemas/MateriaResponseDto"}}}},
+      "SuccessResponseDtoListGroupResponseDto": {"type": "object", "properties": {"message": {"type": "string"}, "data": {"type": "array", "items": {"$ref": "#/components/schemas/GroupResponseDto"}}}},
+      "SuccessResponseDtoListCursoResponseDto": {"type": "object", "properties": {"message": {"type": "string"}, "data": {"type": "array", "items": {"$ref": "#/components/schemas/CursoResponseDto"}}}},
+      "SuccessResponseDtoListCarreraResponseDto": {"type": "object", "properties": {"message": {"type": "string"}, "data": {"type": "array", "items": {"$ref": "#/components/schemas/CarreraResponseDto"}}}},
+      "SuccessResponseDtoListAnioAcademicoResponseDto": {"type": "object", "properties": {"message": {"type": "string"}, "data": {"type": "array", "items": {"$ref": "#/components/schemas/AnioAcademicoResponseDto"}}}},
+      "SuccessResponseDtoListAlumnoResponseDto": {"type": "object", "properties": {"message": {"type": "string"}, "data": {"type": "array", "items": {"$ref": "#/components/schemas/AlumnoResponseDto"}}}},
+      "SuccessResponseDtoVoid": {"type": "object", "properties": {"message": {"type": "string"}, "data": {"type": "object"}}}
+    }
+  }
+}
