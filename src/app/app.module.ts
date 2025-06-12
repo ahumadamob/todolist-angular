@@ -19,6 +19,8 @@ import { ProfesorListComponent } from './profesores/profesor-list.component';
 import { ProfesorFormComponent } from './profesores/profesor-form.component';
 import { AnioAcademicoListComponent } from './anios-academicos/anio-academico-list.component';
 import { AnioAcademicoFormComponent } from './anios-academicos/anio-academico-form.component';
+import { CursoListComponent } from './cursos/curso-list.component';
+import { CursoFormComponent } from './cursos/curso-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'users', pathMatch: 'full' },
@@ -40,6 +42,9 @@ const routes: Routes = [
   { path: 'profesores', component: ProfesorListComponent },
   { path: 'profesores/new', component: ProfesorFormComponent },
   { path: 'profesores/:id', component: ProfesorFormComponent },
+  { path: 'cursos', component: CursoListComponent },
+  { path: 'cursos/new', component: CursoFormComponent },
+  { path: 'cursos/:id', component: CursoFormComponent },
   { path: 'anios-academicos', component: AnioAcademicoListComponent },
   { path: 'anios-academicos/new', component: AnioAcademicoFormComponent },
   { path: 'anios-academicos/:id', component: AnioAcademicoFormComponent }
@@ -60,6 +65,8 @@ const routes: Routes = [
     AlumnoFormComponent,
     ProfesorListComponent,
     ProfesorFormComponent,
+    CursoListComponent,
+    CursoFormComponent,
     AnioAcademicoListComponent,
     AnioAcademicoFormComponent
   ],
