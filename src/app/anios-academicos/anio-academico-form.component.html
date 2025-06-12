@@ -1,0 +1,27 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">
+      {{ editId ? 'Editar Año Académico' : 'Agregar Año Académico' }}
+    </h6>
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="submit()" class="mb-3">
+      <div class="mb-2">
+        <label class="form-label">Año</label>
+        <input type="number" class="form-control" [(ngModel)]="dto.anio" name="anio" required
+               [ngClass]="{ 'is-invalid': errors['anio'] }">
+        <div *ngIf="errors['anio']" class="invalid-feedback">
+          {{ errors['anio'] }}
+        </div>
+      </div>
+      <div class="form-check mb-2">
+        <input type="checkbox" class="form-check-input" [(ngModel)]="dto.activo" name="activo" id="activo">
+        <label class="form-check-label" for="activo">Activo</label>
+      </div>
+      <button type="submit" class="btn btn-primary">
+        {{ editId ? 'Actualizar Año Académico' : 'Agregar Año Académico' }}
+      </button>
+    </form>
+  </div>
+</div>
+
