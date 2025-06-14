@@ -6,53 +6,33 @@
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item">
-      <a class="nav-link" routerLink="/users">
-        <i class="fas fa-users"></i>
-        <span>Usuarios</span>
+      <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAdmin" aria-expanded="false" aria-controls="collapseAdmin">
+        <i class="fas fa-user-shield"></i>
+        <span>Administración</span>
       </a>
-    </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/groups">
-          <i class="fas fa-layer-group"></i>
-          <span>Grupos</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/carreras">
-          <i class="fas fa-graduation-cap"></i>
-          <span>Carreras</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/materias">
-          <i class="fas fa-book"></i>
-          <span>Materias</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCursos" aria-expanded="false" aria-controls="collapseCursos">
-          <i class="fas fa-school"></i>
-          <span>Cursos</span>
-        </a>
-        <div id="collapseCursos" class="collapse" data-bs-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" routerLink="/cursos">Cursos</a>
-            <a class="collapse-item" routerLink="/anios-academicos">Años Académicos</a>
-          </div>
+      <div id="collapseAdmin" class="collapse" data-bs-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <a class="collapse-item" routerLink="/users">Usuarios</a>
+          <a class="collapse-item" routerLink="/groups">Grupos</a>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/profesores">
-          <i class="fas fa-chalkboard-teacher"></i>
-          <span>Profesores</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/alumnos">
-          <i class="fas fa-user-graduate"></i>
-          <span>Alumnos</span>
-        </a>
-      </li>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseAcademico" aria-expanded="false" aria-controls="collapseAcademico">
+        <i class="fas fa-university"></i>
+        <span>Académico</span>
+      </a>
+      <div id="collapseAcademico" class="collapse" data-bs-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <a class="collapse-item" routerLink="/carreras">Carreras</a>
+          <a class="collapse-item" routerLink="/materias">Materias</a>
+          <a class="collapse-item" routerLink="/cursos">Cursos</a>
+          <a class="collapse-item" routerLink="/anios-academicos">Años Académicos</a>
+          <a class="collapse-item" routerLink="/profesores">Profesores</a>
+          <a class="collapse-item" routerLink="/alumnos">Alumnos</a>
+        </div>
+      </div>
+    </li>
     </ul>
 
   <!-- Content Wrapper -->
