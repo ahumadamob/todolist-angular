@@ -25,6 +25,8 @@ export class CursoFormComponent {
   materias: MateriaResponseDto[] = [];
   cursoMaterias: CursoMateriaResponseDto[] = [];
   materiaId = 0;
+  deleteCursoMateriaId?: number;
+  cursoMateriaModal: any;
   errors: Record<string, string> = {};
 
   constructor(
@@ -101,9 +103,26 @@ export class CursoFormComponent {
     });
   }
 
-  removeCursoMateria(id: number) {
-    this.cursoMateriaService.delete(id).subscribe(() => {
-      this.cursoMaterias = this.cursoMaterias.filter(cm => cm.id !== id);
+  confirmDeleteCursoMateria(id: number) {
+    this.deleteCursoMateriaId = id;
+    const el = document.getElementById('cursoMateriaDeleteModal');
+    if (el) {
+      this.cursoMateriaModal = new (window as any).bootstrap.Modal(el);
+      this.cursoMateriaModal.show();
+    }
+  }
+
+  deleteCursoMateriaConfirmed() {
+    if (!this.deleteCursoMateriaId) {
+      return;
+    }
+    this.cursoMateriaService.delete(this.deleteCursoMateriaId).subscribe(() => {
+      this.cursoMaterias = this.cursoMaterias.filter(
+        cm => cm.id !== this.deleteCursoMateriaId
+      );
+      if (this.cursoMateriaModal) {
+        this.cursoMateriaModal.hide();
+      }
     });
   }
 }
