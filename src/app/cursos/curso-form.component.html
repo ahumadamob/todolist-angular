@@ -39,5 +39,38 @@
         {{ editId ? 'Actualizar Curso' : 'Agregar Curso' }}
       </button>
     </form>
+    <div *ngIf="editId" class="mt-4">
+      <h6 class="mb-3">Materias del Curso</h6>
+      <form (ngSubmit)="addCursoMateria()" class="row align-items-end mb-3">
+        <div class="col-md-8 mb-2">
+          <label class="form-label">Materia</label>
+          <select class="form-select" [(ngModel)]="materiaId" name="materiaId">
+            <option value="0" disabled selected>Seleccione una materia</option>
+            <option *ngFor="let m of materias" [ngValue]="m.id">{{ m.nombre }}</option>
+          </select>
+        </div>
+        <div class="col-md-4 mb-2">
+          <button type="submit" class="btn btn-secondary w-100">Agregar</button>
+        </div>
+      </form>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Materia</th>
+            <th style="width: 10%">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let cm of cursoMaterias">
+            <td>{{ cm.materia.nombre }}</td>
+            <td>
+              <button type="button" class="btn btn-danger btn-sm" (click)="removeCursoMateria(cm.id)">
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
