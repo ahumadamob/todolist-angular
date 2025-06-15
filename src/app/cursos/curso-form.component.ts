@@ -8,7 +8,7 @@ import { AnioAcademicoService, AnioAcademicoResponseDto } from '../anios-academi
   templateUrl: './curso-form.component.html'
 })
 export class CursoFormComponent {
-  dto: CursoRequestDto = { anioCursado: new Date().getFullYear(), division: '', anioAcademicoId: 0 };
+  dto: CursoRequestDto = { anioCursado: undefined, division: '', anioAcademicoId: 0 };
   anios: AnioAcademicoResponseDto[] = [];
   errors: Record<string, string> = {};
 

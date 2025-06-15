@@ -6,31 +6,33 @@
   </div>
   <div class="card-body">
     <form (ngSubmit)="submit()" class="mb-3">
-      <div class="mb-2">
-        <label class="form-label">Año Cursado</label>
-        <input type="number" class="form-control" [(ngModel)]="dto.anioCursado" name="anioCursado" required
-               [ngClass]="{ 'is-invalid': errors['anioCursado'] }">
-        <div *ngIf="errors['anioCursado']" class="invalid-feedback">
-          {{ errors['anioCursado'] }}
+      <div class="row">
+        <div class="col-md-4 mb-2">
+          <label class="form-label">Año Cursado</label>
+          <input type="number" class="form-control" [(ngModel)]="dto.anioCursado" name="anioCursado" required
+                 [ngClass]="{ 'is-invalid': errors['anioCursado'] }">
+          <div *ngIf="errors['anioCursado']" class="invalid-feedback">
+            {{ errors['anioCursado'] }}
+          </div>
         </div>
-      </div>
-      <div class="mb-2">
-        <label class="form-label">División</label>
-        <input class="form-control" [(ngModel)]="dto.division" name="division" required
-               [ngClass]="{ 'is-invalid': errors['division'] }">
-        <div *ngIf="errors['division']" class="invalid-feedback">
-          {{ errors['division'] }}
+        <div class="col-md-4 mb-2">
+          <label class="form-label">División</label>
+          <input class="form-control" [(ngModel)]="dto.division" name="division" required
+                 [ngClass]="{ 'is-invalid': errors['division'] }">
+          <div *ngIf="errors['division']" class="invalid-feedback">
+            {{ errors['division'] }}
+          </div>
         </div>
-      </div>
-      <div class="mb-2">
-        <label class="form-label">Año Académico</label>
-        <select class="form-select" [(ngModel)]="dto.anioAcademicoId" name="anioAcademicoId" required
-                [ngClass]="{ 'is-invalid': errors['anioAcademicoId'] }">
-          <option value="" disabled selected>Seleccione un año académico</option>
-          <option *ngFor="let a of anios" [ngValue]="a.id">{{ a.anio }}</option>
-        </select>
-        <div *ngIf="errors['anioAcademicoId']" class="invalid-feedback">
-          {{ errors['anioAcademicoId'] }}
+        <div class="col-md-4 mb-2">
+          <label class="form-label">Año Académico</label>
+          <select class="form-select" [(ngModel)]="dto.anioAcademicoId" name="anioAcademicoId" required
+                  [ngClass]="{ 'is-invalid': errors['anioAcademicoId'] }">
+            <option value="" disabled selected>Seleccione un año académico</option>
+            <option *ngFor="let a of anios" [ngValue]="a.id">{{ a.anio }}</option>
+          </select>
+          <div *ngIf="errors['anioAcademicoId']" class="invalid-feedback">
+            {{ errors['anioAcademicoId'] }}
+          </div>
         </div>
       </div>
       <button type="submit" class="btn btn-primary">
