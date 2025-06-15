@@ -13,7 +13,7 @@ export interface CursoResponseDto {
 }
 
 export interface CursoRequestDto {
-  anioCursado: number;
+  anioCursado?: number;
   division: string;
   anioAcademicoId: number;
 }
