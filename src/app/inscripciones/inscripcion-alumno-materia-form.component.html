@@ -1,0 +1,66 @@
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h6 class="m-0 font-weight-bold text-primary">Alumnos Inscritos</h6>
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="addInscripcion()" class="row align-items-end mb-3">
+      <input type="hidden" [value]="cursoMateriaId" name="cursoMateriaId">
+      <div class="col-md-8 mb-2 position-relative">
+        <label class="form-label">Alumno</label>
+        <input class="form-control" [(ngModel)]="searchText" (input)="onSearchChange()" name="alumnoSearch" list="alumnosList" placeholder="Buscar alumno">
+        <datalist id="alumnosList">
+          <option *ngFor="let a of filteredAlumnos" (click)="selectAlumno(a)" [value]="a.nombre + ' ' + a.apellido"></option>
+        </datalist>
+      </div>
+      <div class="col-md-4 mb-2">
+        <button type="submit" class="btn btn-primary w-100">Agregar</button>
+      </div>
+    </form>
+    <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible" role="alert">
+      {{ errorMessage }}
+      <button type="button" class="btn-close" aria-label="Close" (click)="errorMessage = ''"></button>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th (click)="sort('apellido')" style="cursor:pointer">Apellido</th>
+            <th (click)="sort('nombre')" style="cursor:pointer">Nombre</th>
+            <th (click)="sort('matricula')" style="cursor:pointer">Matricula</th>
+            <th style="width: 10%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ins of inscripciones">
+            <td>{{ ins.alumno.apellido }}</td>
+            <td>{{ ins.alumno.nombre }}</td>
+            <td>{{ ins.alumno.id }}</td>
+            <td class="text-nowrap">
+              <button class="btn btn-danger btn-icon-split btn-sm" (click)="confirmDelete(ins.id)">
+                <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                <span class="text">Eliminar</span>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Confirm Delete Modal -->
+<div class="modal fade" id="inscripcionDeleteModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmar eliminación</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">¿Estás seguro que deseas eliminar este registro?</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-danger" (click)="deleteConfirmed()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
