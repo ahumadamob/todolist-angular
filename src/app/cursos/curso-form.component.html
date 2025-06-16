@@ -6,36 +6,90 @@
   </div>
   <div class="card-body">
     <form (ngSubmit)="submit()" class="mb-3">
-      <div class="mb-2">
-        <label class="form-label">Año Cursado</label>
-        <input type="number" class="form-control" [(ngModel)]="dto.anioCursado" name="anioCursado" required
-               [ngClass]="{ 'is-invalid': errors['anioCursado'] }">
-        <div *ngIf="errors['anioCursado']" class="invalid-feedback">
-          {{ errors['anioCursado'] }}
+      <div class="row">
+        <div class="col-md-4 mb-2">
+          <label class="form-label">Año Cursado</label>
+          <input type="number" class="form-control" [(ngModel)]="dto.anioCursado" name="anioCursado" required
+                 [ngClass]="{ 'is-invalid': errors['anioCursado'] }">
+          <div *ngIf="errors['anioCursado']" class="invalid-feedback">
+            {{ errors['anioCursado'] }}
+          </div>
         </div>
-      </div>
-      <div class="mb-2">
-        <label class="form-label">División</label>
-        <input class="form-control" [(ngModel)]="dto.division" name="division" required
-               [ngClass]="{ 'is-invalid': errors['division'] }">
-        <div *ngIf="errors['division']" class="invalid-feedback">
-          {{ errors['division'] }}
+        <div class="col-md-4 mb-2">
+          <label class="form-label">División</label>
+          <input class="form-control" [(ngModel)]="dto.division" name="division" required
+                 [ngClass]="{ 'is-invalid': errors['division'] }">
+          <div *ngIf="errors['division']" class="invalid-feedback">
+            {{ errors['division'] }}
+          </div>
         </div>
-      </div>
-      <div class="mb-2">
-        <label class="form-label">Año Académico</label>
-        <select class="form-select" [(ngModel)]="dto.anioAcademicoId" name="anioAcademicoId" required
-                [ngClass]="{ 'is-invalid': errors['anioAcademicoId'] }">
-          <option value="" disabled selected>Seleccione un año académico</option>
-          <option *ngFor="let a of anios" [ngValue]="a.id">{{ a.anio }}</option>
-        </select>
-        <div *ngIf="errors['anioAcademicoId']" class="invalid-feedback">
-          {{ errors['anioAcademicoId'] }}
+        <div class="col-md-4 mb-2">
+          <label class="form-label">Año Académico</label>
+          <select class="form-select" [(ngModel)]="dto.anioAcademicoId" name="anioAcademicoId" required
+                  [ngClass]="{ 'is-invalid': errors['anioAcademicoId'] }">
+            <option value="" disabled selected>Seleccione un año académico</option>
+            <option *ngFor="let a of anios" [ngValue]="a.id">{{ a.anio }}</option>
+          </select>
+          <div *ngIf="errors['anioAcademicoId']" class="invalid-feedback">
+            {{ errors['anioAcademicoId'] }}
+          </div>
         </div>
       </div>
       <button type="submit" class="btn btn-primary">
         {{ editId ? 'Actualizar Curso' : 'Agregar Curso' }}
       </button>
     </form>
+    <div *ngIf="editId" class="mt-4">
+      <h6 class="mb-3">Materias del Curso</h6>
+      <form (ngSubmit)="addCursoMateria()" class="row align-items-end mb-3">
+        <div class="col-md-8 mb-2">
+          <label class="form-label">Materia</label>
+          <select class="form-select" [(ngModel)]="materiaId" name="materiaId">
+            <option value="0" disabled selected>Seleccione una materia</option>
+            <option *ngFor="let m of materias" [ngValue]="m.id">{{ m.nombre }}</option>
+          </select>
+        </div>
+        <div class="col-md-4 mb-2">
+          <button type="submit" class="btn btn-secondary w-100">Agregar</button>
+        </div>
+      </form>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Materia</th>
+              <th style="width: 10%">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cm of cursoMaterias">
+              <td>{{ cm.materia.nombre }}</td>
+              <td class="text-nowrap">
+                <button class="btn btn-danger btn-icon-split btn-sm" (click)="confirmDeleteCursoMateria(cm.id)">
+                  <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                  <span class="text">Eliminar</span>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- Confirm Delete Modal -->
+      <div class="modal fade" id="cursoMateriaDeleteModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Confirmar eliminación</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">¿Estás seguro que deseas eliminar este registro?</div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-danger" (click)="deleteCursoMateriaConfirmed()">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
