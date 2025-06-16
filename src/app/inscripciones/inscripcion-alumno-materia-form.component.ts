@@ -18,6 +18,11 @@ export class InscripcionAlumnoMateriaFormComponent {
   filteredAlumnos: AlumnoResponseDto[] = [];
   searchText = '';
   selectedAlumno?: AlumnoResponseDto;
+  deleteId?: number;
+  modal: any;
+  errorMessage = '';
+  sortKey: 'apellido' | 'nombre' | 'matricula' = 'apellido';
+  sortAsc = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -38,7 +43,10 @@ export class InscripcionAlumnoMateriaFormComponent {
   loadInscripciones() {
     this.inscripcionService
       .findByCursoMateria(this.cursoMateriaId)
-      .subscribe(i => (this.inscripciones = i));
+      .subscribe(i => {
+        this.inscripciones = i;
+        this.applySort();
+      });
   }
 
   onSearchChange() {
@@ -75,6 +83,73 @@ export class InscripcionAlumnoMateriaFormComponent {
       this.searchText = '';
       this.selectedAlumno = undefined;
       this.filteredAlumnos = this.alumnos;
+      this.applySort();
+    });
+  }
+
+  confirmDelete(id: number) {
+    this.deleteId = id;
+    const el = document.getElementById('inscripcionDeleteModal');
+    if (el) {
+      this.modal = new (window as any).bootstrap.Modal(el);
+      this.modal.show();
+    }
+  }
+
+  deleteConfirmed() {
+    if (!this.deleteId) {
+      return;
+    }
+    this.inscripcionService.delete(this.deleteId).subscribe({
+      next: () => {
+        this.loadInscripciones();
+        if (this.modal) {
+          this.modal.hide();
+        }
+      },
+      error: err => {
+        if (err.status === 409) {
+          if (this.modal) {
+            this.modal.hide();
+          }
+          const backendMsg = typeof err.error === 'string' ? err.error : err.error?.message;
+          this.errorMessage = backendMsg || 'No se puede eliminar el registro';
+        }
+      }
+    });
+  }
+
+  sort(field: 'apellido' | 'nombre' | 'matricula') {
+    if (this.sortKey === field) {
+      this.sortAsc = !this.sortAsc;
+    } else {
+      this.sortKey = field;
+      this.sortAsc = true;
+    }
+    this.applySort();
+  }
+
+  private applySort() {
+    this.inscripciones.sort((a, b) => {
+      let aValue: any;
+      let bValue: any;
+      if (this.sortKey === 'apellido') {
+        aValue = a.alumno.apellido;
+        bValue = b.alumno.apellido;
+      } else if (this.sortKey === 'nombre') {
+        aValue = a.alumno.nombre;
+        bValue = b.alumno.nombre;
+      } else {
+        aValue = a.alumno.id;
+        bValue = b.alumno.id;
+      }
+      if (aValue < bValue) {
+        return this.sortAsc ? -1 : 1;
+      }
+      if (aValue > bValue) {
+        return this.sortAsc ? 1 : -1;
+      }
+      return 0;
     });
   }
 }

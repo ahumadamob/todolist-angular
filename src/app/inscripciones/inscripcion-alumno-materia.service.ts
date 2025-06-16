@@ -38,4 +38,8 @@ export class InscripcionAlumnoMateriaService {
       .post<{ data: InscripcionAlumnoMateriaResponseDto }>(this.api, dto)
       .pipe(map(res => res.data));
   }
+
+  delete(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.api}/${id}`);
+  }
 }
