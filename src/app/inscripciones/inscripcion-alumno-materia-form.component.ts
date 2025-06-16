@@ -22,7 +22,7 @@ export class InscripcionAlumnoMateriaFormComponent {
   modal: any;
   errorMessage = '';
   sortKey: 'apellido' | 'nombre' | 'matricula' = 'apellido';
-  sortAsc = false;
+  sortAsc = true;
 
   constructor(
     private route: ActivatedRoute,
