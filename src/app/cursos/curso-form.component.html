@@ -65,6 +65,10 @@
             <tr *ngFor="let cm of cursoMaterias">
               <td>{{ cm.materia.nombre }}</td>
               <td class="text-nowrap">
+                <a class="btn btn-primary btn-icon-split btn-sm me-1" [routerLink]="['/curso-materias', cm.id, 'alumnos']">
+                  <span class="icon text-white-50"><i class="fas fa-users"></i></span>
+                  <span class="text">Ver Alumnos</span>
+                </a>
                 <button class="btn btn-danger btn-icon-split btn-sm" (click)="confirmDeleteCursoMateria(cm.id)">
                   <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
                   <span class="text">Eliminar</span>
